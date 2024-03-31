@@ -1,0 +1,21 @@
+.contactList {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 20px;
+  column-gap: 10px;
+  margin-top: 45px;
+  max-width: 600px;
+}
+
+.contactsWrapper {
+  position: relative;
+}
+
+.contactsWrapper > p {
+  position: absolute;
+  top: 10px;
+}
+
+.error {
+  color: rgb(255, 75, 75);
+}

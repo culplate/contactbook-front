@@ -1,0 +1,49 @@
+.error {
+  color: orangered;
+  max-width: 80%;
+  font-size: 12px;
+  position: absolute;
+  left: 0;
+  bottom: -16px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.form {
+  max-width: 290px;
+  border: 1.5px solid #575656;
+  border-radius: 3px;
+  padding: 10px 14px;
+  margin-top: 30px;
+}
+
+.label {
+  display: block;
+}
+
+.inputWrap:last-of-type .label {
+  margin-top: 20px;
+}
+
+.input {
+  width: 100%;
+  height: 28px;
+  margin-top: 2px;
+  border: 1px solid #181818;
+  padding: 2px 4px;
+  border-radius: 3px;
+}
+
+.inputWrap {
+  position: relative;
+}
+
+.form button {
+  padding: 4px 8px;
+  cursor: pointer;
+  margin: 20px auto 0;
+}
