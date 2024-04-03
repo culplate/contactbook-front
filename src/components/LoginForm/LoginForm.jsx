@@ -1,10 +1,16 @@
-import { Field, Form, Formik } from "formik";
+import { Field, Form, Formik, ErrorMessage } from "formik";
+import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 import css from "./LoginForm.module.css";
 import { logIn, register } from "../../redux/auth/operations";
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
+
+  const FeedbackSchema = Yup.object().shape({
+    email: Yup.string().email("Invalid email").required("Email is required"),
+    password: Yup.string().required("Password is required"),
+  });
 
   return (
     <Formik
@@ -17,6 +23,7 @@ export const LoginForm = () => {
         console.log(values);
         actions.resetForm();
       }}
+      validationSchema={FeedbackSchema}
     >
       <Form className={css.form}>
         <div className={css.inputWrap}>
@@ -30,6 +37,7 @@ export const LoginForm = () => {
             id="useremail"
             autoComplete="email"
           />
+          <ErrorMessage className={css.error} component="span" name="email" />
         </div>
 
         <div className={css.inputWrap}>
@@ -42,6 +50,11 @@ export const LoginForm = () => {
             name="password"
             id="userpassword"
             autoComplete="off"
+          />
+          <ErrorMessage
+            className={css.error}
+            component="span"
+            name="password"
           />
         </div>
 

@@ -1,14 +1,12 @@
-import { useState, useEffect, lazy } from "react";
-import { ContactList } from "./ContactList/ContactList";
-import { SearchBox } from "./SearchBox/SearchBox";
-import { ContactForm } from "./ContactForm/ContactForm";
 import "./App.css";
+import { lazy, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import { Layout } from "./Layout";
 import { refreshUser } from "../redux/auth/operations";
 import { RestrictedRoute } from "./RestrictedRoute";
 import { PrivateRoute } from "./PrivateRoute";
+import { Toaster } from "react-hot-toast";
 
 const HomePage = lazy(() => import("../pages/Home/Home"));
 const RegisterPage = lazy(() => import("../pages/Register/Register"));
@@ -53,6 +51,7 @@ function App() {
           />
         </Route>
       </Routes>
+      <Toaster />
     </>
   );
 }
