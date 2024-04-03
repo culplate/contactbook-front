@@ -5,7 +5,7 @@ import {
   selectFilteredContacts,
   selectIsError,
   selectIsLoading,
-} from "../../redux/contacts/contactsSlice";
+} from "../../redux/contacts/selectors";
 import { Loader } from "../Loader/Loader";
 
 export const ContactList = () => {

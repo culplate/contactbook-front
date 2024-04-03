@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import css from "./Contact.module.css";
 import { FaUser, FaPhoneSquare } from "react-icons/fa";
-import { deleteContact } from "../../redux/contacts/contactsOps";
+import { deleteContact } from "../../redux/contacts/operations";
 
 export const Contact = ({ item }) => {
   const dispatch = useDispatch();
@@ -16,7 +16,7 @@ export const Contact = ({ item }) => {
         </div>
         <div className={css.userWrap}>
           <FaPhoneSquare className={css.icon} />
-          <p>{item.phone}</p>
+          <p>{item.number}</p>
         </div>
       </div>
       <button onClick={handleDelete} className={css.dltBtn}>

@@ -6,6 +6,7 @@ import "./App.css";
 import { useDispatch } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import { Layout } from "./Layout";
+import { refreshUser } from "../redux/auth/operations";
 
 const HomePage = lazy(() => import("../pages/Home/Home"));
 const RegisterPage = lazy(() => import("../pages/Register/Register"));
@@ -15,9 +16,9 @@ const ContactsPage = lazy(() => import("../pages/Contacts/Contacts"));
 function App() {
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(fetchContacts());
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
 
   return (
     <>
