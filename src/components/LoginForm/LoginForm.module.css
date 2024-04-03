@@ -14,7 +14,7 @@ input::-webkit-inner-spin-button {
 }
 
 .form {
-  max-width: 290px;
+  min-width: 300px;
   border: 1.5px solid #575656;
   border-radius: 3px;
   padding: 10px 14px;
