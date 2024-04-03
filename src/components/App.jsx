@@ -51,7 +51,7 @@ function App() {
           />
         </Route>
       </Routes>
-      <Toaster />
+      <Toaster position="top-right" reverseOrder={false} />
     </>
   );
 }
