@@ -1,10 +1,10 @@
-import css from "./ContactForm.module.css";
-import { Formik, Form, Field, ErrorMessage } from "formik";
-import * as Yup from "yup";
 import { useDispatch } from "react-redux";
-import { addContact } from "../../redux/contacts/operations";
+import * as Yup from "yup";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import css from "./ContactEditForm.module.css";
+import { editContact } from "../../redux/contacts/operations";
 
-export const ContactForm = () => {
+export const ContactEditForm = ({ item, setEdit }) => {
   const dispatch = useDispatch();
 
   const FeedbackSchema = Yup.object().shape({
@@ -21,20 +21,18 @@ export const ContactForm = () => {
   return (
     <Formik
       initialValues={{
-        name: "",
-        number: "",
+        name: item.name,
+        number: item.number,
       }}
       onSubmit={(values, actions) => {
-        dispatch(addContact({ ...values }));
+        dispatch(editContact({ id: item.id, ...values }));
+        setEdit(false);
         actions.resetForm();
       }}
       validationSchema={FeedbackSchema}
     >
       <Form className={css.form}>
         <div className={css.inputWrap}>
-          <label className={css.label} htmlFor="contactname">
-            Name
-          </label>
           <Field
             className={css.input}
             type="text"
@@ -46,9 +44,6 @@ export const ContactForm = () => {
         </div>
 
         <div className={css.inputWrap}>
-          <label className={css.label} htmlFor="contactnumber">
-            Number
-          </label>
           <Field
             className={css.input}
             type="text"
@@ -59,7 +54,10 @@ export const ContactForm = () => {
           <ErrorMessage className={css.error} component="span" name="number" />
         </div>
 
-        <button type="submit">Add contact</button>
+        <button type="submit">Submit</button>
+        <button type="button" onClick={() => setEdit(false)}>
+          Cancel
+        </button>
       </Form>
     </Formik>
   );

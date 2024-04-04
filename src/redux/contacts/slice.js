@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchContacts, deleteContact, addContact } from "./operations";
+import { fetchContacts, deleteContact, addContact, editContact } from "./operations";
 import toast from "react-hot-toast";
 
 const handlePending = (state) => {
@@ -48,6 +48,10 @@ const contactsSlice = createSlice({
                 toast.success('Contact added');
             })
             .addCase(addContact.rejected, handleRejected)
+            .addCase(editContact.fulfilled, (state, action) => {
+                const index = state.items.findIndex(item => item.id === action.payload.id);
+                state.items.splice(index, 1, action.payload)
+            })
     }
 });
 

@@ -8,6 +8,11 @@ import { RestrictedRoute } from "./RestrictedRoute";
 import { PrivateRoute } from "./PrivateRoute";
 import { Toaster } from "react-hot-toast";
 
+// TODO filtration with both number
+// TODO Modall for delletes
+// TODO Editing contacts
+// TODO Material UI
+
 const HomePage = lazy(() => import("../pages/Home/Home"));
 const RegisterPage = lazy(() => import("../pages/Register/Register"));
 const LoginPage = lazy(() => import("../pages/Login/Login"));
