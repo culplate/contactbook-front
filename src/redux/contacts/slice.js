@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchContacts, deleteContact, addContact, editContact } from "./operations";
 import toast from "react-hot-toast";
+import { logOut } from "../auth/operations";
 
 const handlePending = (state) => {
     state.loading = true;
@@ -52,6 +53,11 @@ const contactsSlice = createSlice({
                 const index = state.items.findIndex(item => item.id === action.payload.id);
                 state.items.splice(index, 1, action.payload)
             })
+            .addCase(logOut.fulfilled, (state, action) => {
+                state.items = [];
+                state.error = null;
+                state.loading = false;
+        })
     }
 });
 
