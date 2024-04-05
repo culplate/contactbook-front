@@ -1,9 +1,10 @@
 import { useDispatch } from "react-redux";
 import * as Yup from "yup";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form, Field, ErrorMessage, useFormik } from "formik";
 import css from "./ContactEditForm.module.css";
 import { editContact } from "../../redux/contacts/operations";
-import { TextField } from "@mui/material";
+import { Button, Input, TextField } from "@mui/material";
+import { TextFields } from "@mui/icons-material";
 
 export const ContactEditForm = ({ item, setEdit }) => {
   const dispatch = useDispatch();
@@ -19,47 +20,53 @@ export const ContactEditForm = ({ item, setEdit }) => {
       .required("Required field"),
   });
 
+  const formik = useFormik({
+    initialValues: {
+      name: item.name,
+      number: item.number,
+    },
+    validationSchema: FeedbackSchema,
+    onSubmit: (values) => {
+      dispatch(editContact({ id: item.id, ...values }));
+      setEdit(false);
+    },
+  });
+
   return (
-    <Formik
-      initialValues={{
-        name: item.name,
-        number: item.number,
-      }}
-      onSubmit={(values, actions) => {
-        dispatch(editContact({ id: item.id, ...values }));
-        setEdit(false);
-        actions.resetForm();
-      }}
-      validationSchema={FeedbackSchema}
-    >
-      <Form className={css.form}>
-        <div className={css.inputWrap}>
-          <Field
-            className={css.input}
-            type="text"
-            name="name"
-            id="contactname"
-            autoComplete="name"
-          />
-          <ErrorMessage className={css.error} component="span" name="name" />
-        </div>
-
-        <div className={css.inputWrap}>
-          <Field
-            className={css.input}
-            type="text"
-            name="number"
-            id="contactnumber"
-            autoComplete="tel"
-          />
-          <ErrorMessage className={css.error} component="span" name="number" />
-        </div>
-
-        <button type="submit">Submit</button>
-        <button type="button" onClick={() => setEdit(false)}>
+    <div>
+      <form onSubmit={formik.handleSubmit}>
+        <TextField
+          sx={{ marginBottom: "20px" }}
+          fullWidth
+          id="contactname"
+          name="name"
+          label="Name"
+          value={formik.values.name}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          error={formik.touched.name && Boolean(formik.errors.name)}
+          helperText={formik.touched.name && formik.errors.name}
+        />
+        <TextField
+          sx={{ marginBottom: "20px" }}
+          fullWidth
+          id="contactnumber"
+          name="number"
+          label="Number"
+          autoComplete="tel"
+          value={formik.values.number}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          error={formik.touched.number && Boolean(formik.errors.number)}
+          helperText={formik.touched.number && formik.errors.number}
+        />
+        <Button color="success" type="submit">
+          Submit
+        </Button>
+        <Button type="button" onClick={() => setEdit(false)}>
           Cancel
-        </button>
-      </Form>
-    </Formik>
+        </Button>
+      </form>
+    </div>
   );
 };

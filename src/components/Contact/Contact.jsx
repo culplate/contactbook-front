@@ -18,6 +18,7 @@ import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import EditNoteSharpIcon from "@mui/icons-material/EditNoteSharp";
 import PersonIcon from "@mui/icons-material/Person";
 import PhoneAndroidIcon from "@mui/icons-material/PhoneAndroid";
+import { ContactEditModal } from "../ContactEditModal/ContactEditModal";
 
 export const Contact = ({ data }) => {
   const dispatch = useDispatch();
@@ -90,10 +91,11 @@ export const Contact = ({ data }) => {
             alignItems: "flex-end",
           }}
         >
-          <IconButton onClick={() => setIsEditing(true)}>
+          {/* <IconButton onClick={() => setIsEditing(true)}>
             <EditNoteSharpIcon />
-          </IconButton>
+          </IconButton> */}
 
+          <ContactEditModal data={data} />
           <IconButton onClick={handleDelete}>
             <DeleteOutlineIcon />
           </IconButton>
