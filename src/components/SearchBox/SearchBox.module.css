@@ -1,6 +1,6 @@
 .searchBox {
   max-width: 290px;
-  margin-top: 40px;
+  margin: 40px 0;
 }
 
 .searchBox input {
