@@ -6,28 +6,12 @@ import {
   selectIsError,
   selectIsLoading,
 } from "../../redux/contacts/selectors";
-import { Loader } from "../Loader/Loader";
 import Grid from "@mui/material/Grid";
-import { Container } from "@mui/material";
 
 export const ContactList = () => {
   const contacts = useSelector(selectFilteredContacts);
   const loading = useSelector(selectIsLoading);
   const error = useSelector(selectIsError);
-
-  // return (
-  //   <div className={css.contactsWrapper}>
-  //     {loading && !error && <Loader />}
-  //     {!loading && error && (
-  //       <p className={css.error}>Whoops, try reloading the page</p>
-  //     )}
-  //     <ul className={css.contactList}>
-  //       {contacts.map((contact) => {
-  //         return <Contact key={contact.id} data={contact} />;
-  //       })}
-  //     </ul>
-  //   </div>
-  // );
 
   return (
     <div>

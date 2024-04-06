@@ -2,7 +2,7 @@ import { Field, Form, Formik, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 import css from "./LoginForm.module.css";
-import { logIn, register } from "../../redux/auth/operations";
+import { login } from "../../redux/auth/operations";
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
@@ -19,7 +19,7 @@ export const LoginForm = () => {
         password: "",
       }}
       onSubmit={(values, actions) => {
-        dispatch(logIn(values));
+        dispatch(login(values));
         actions.resetForm();
       }}
       validationSchema={FeedbackSchema}

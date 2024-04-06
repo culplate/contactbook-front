@@ -7,11 +7,12 @@ import { refreshUser } from "../redux/auth/operations";
 import { RestrictedRoute } from "./RestrictedRoute";
 import { PrivateRoute } from "./PrivateRoute";
 import { Toaster } from "react-hot-toast";
+import { useAuth } from "../hooks/useAuth";
 
-// TODO filtration with both number
-// TODO Modall for delletes
-// TODO Editing contacts
 // TODO Material UI
+// TODO Modall for delletes
+// DONE filtration with both number
+// DONE Editing contacts
 
 const HomePage = lazy(() => import("../pages/Home/Home"));
 const RegisterPage = lazy(() => import("../pages/Register/Register"));
@@ -20,12 +21,15 @@ const ContactsPage = lazy(() => import("../pages/Contacts/Contacts"));
 
 function App() {
   const dispatch = useDispatch();
+  const { isRefershing } = useAuth();
 
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
 
-  return (
+  return isRefershing ? (
+    <h2>Refreshing user...</h2>
+  ) : (
     <>
       <Routes>
         <Route path="/" element={<Layout />}>
