@@ -20,7 +20,6 @@ export const LoginForm = () => {
       }}
       onSubmit={(values, actions) => {
         dispatch(logIn(values));
-        console.log(values);
         actions.resetForm();
       }}
       validationSchema={FeedbackSchema}

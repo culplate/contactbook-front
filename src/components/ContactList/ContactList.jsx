@@ -30,7 +30,7 @@ export const ContactList = () => {
   // );
 
   return (
-    <Container>
+    <div>
       {/* {loading && !error && <Loader />} */}
       {!loading && error && (
         <p className={css.error}>Whoops, try reloading the page</p>
@@ -44,6 +44,6 @@ export const ContactList = () => {
           );
         })}
       </Grid>
-    </Container>
+    </div>
   );
 };
