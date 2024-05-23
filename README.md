@@ -1,4 +1,3 @@
-# React HW #3
+# Contact Book
 
-This is homework task covering React forms.
 Tools: Vite, Formik, Yup, nanoId
