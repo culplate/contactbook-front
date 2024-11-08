@@ -12,17 +12,21 @@ export const ContactEditForm = ({ item, setEdit }) => {
     name: Yup.string()
       .min(3, "Must be at least 3 symbols long")
       .max(30, "Too Long! (max. 30 symbols)")
-      .required("Required field"),
+      .required("Name is required"),
     number: Yup.string()
       .min(5, "Must be at least 5 sybmols long")
-      .max(15, "Too Long! (max. 15 symbols)")
-      .required("Required field"),
+      .max(20, "Too Long! (max. 20 symbols)"),
+    email: Yup.string()
+      .email("Invalid email")
+      .min(5, "Must be at least 5 sybmols long")
+      .max(50, "Too Long! (max. 50 symbols)"),
   });
 
   const formik = useFormik({
     initialValues: {
       name: item.name,
-      number: item.number,
+      number: item.number || "",
+      email: item.email || "",
     },
     validationSchema: FeedbackSchema,
     onSubmit: (values) => {
@@ -58,6 +62,19 @@ export const ContactEditForm = ({ item, setEdit }) => {
           onBlur={formik.handleBlur}
           error={formik.touched.number && Boolean(formik.errors.number)}
           helperText={formik.touched.number && formik.errors.number}
+        />
+        <TextField
+          sx={{ marginBottom: "20px" }}
+          fullWidth
+          id="contactemail"
+          name="email"
+          label="Email"
+          autoComplete="tel"
+          value={formik.values.email}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          error={formik.touched.email && Boolean(formik.errors.email)}
+          helperText={formik.touched.email && formik.errors.email}
         />
         <Button color="success" type="submit">
           Submit

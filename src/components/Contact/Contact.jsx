@@ -41,7 +41,9 @@ export const Contact = ({ data }) => {
 
           <Box display="flex">
             <PhoneAndroidIcon fontSize="small" />
-            <Typography variant="body1">{data.number}</Typography>
+            <Typography variant="body1">
+              {data.number ? data.number : "No number"}
+            </Typography>
           </Box>
         </CardContent>
 

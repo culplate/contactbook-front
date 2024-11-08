@@ -14,11 +14,11 @@ export const ContactForm = () => {
       .required("Name is required"),
     number: Yup.string()
       .min(5, "Must be at least 5 sybmols long")
-      .max(15, "Too Long! (max. 15 symbols)"),
+      .max(20, "Too Long! (max. 20 symbols)"),
     email: Yup.string()
       .email("Invalid email")
       .min(5, "Must be at least 5 sybmols long")
-      .max(25, "Too Long! (max. 25 symbols)"),
+      .max(50, "Too Long! (max. 50 symbols)"),
   });
 
   return (
