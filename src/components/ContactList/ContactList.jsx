@@ -22,7 +22,7 @@ export const ContactList = () => {
       <Grid container spacing={2}>
         {contacts.map((contact) => {
           return (
-            <Grid item xs={12} sm={6} md={4} lg={3} key={contact.id}>
+            <Grid item xs={12} sm={6} md={4} lg={3} key={contact._id}>
               <Contact data={contact} />
             </Grid>
           );
