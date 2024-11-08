@@ -11,11 +11,11 @@ export const ContactEditForm = ({ item, setEdit }) => {
   const FeedbackSchema = Yup.object().shape({
     name: Yup.string()
       .min(3, "Must be at least 3 symbols long")
-      .max(20, "Too Long! (max. 50 symbols)")
+      .max(30, "Too Long! (max. 30 symbols)")
       .required("Required field"),
     number: Yup.string()
       .min(5, "Must be at least 5 sybmols long")
-      .max(12, "Too Long! (max. 12 symbols)")
+      .max(15, "Too Long! (max. 15 symbols)")
       .required("Required field"),
   });
 
@@ -26,7 +26,7 @@ export const ContactEditForm = ({ item, setEdit }) => {
     },
     validationSchema: FeedbackSchema,
     onSubmit: (values) => {
-      dispatch(editContact({ id: item.id, ...values }));
+      dispatch(editContact({ id: item._id, ...values }));
       setEdit(false);
     },
   });

@@ -17,7 +17,7 @@ import { ContactEditModal } from "../ContactEditModal/ContactEditModal";
 
 export const Contact = ({ data }) => {
   const dispatch = useDispatch();
-  const handleDelete = () => dispatch(deleteContact(data.id));
+  const handleDelete = () => dispatch(deleteContact(data._id));
 
   return (
     <div>

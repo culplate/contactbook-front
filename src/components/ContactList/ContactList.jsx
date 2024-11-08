@@ -7,6 +7,7 @@ import {
   selectIsLoading,
 } from "../../redux/contacts/selectors";
 import Grid from "@mui/material/Grid";
+import toast from "react-hot-toast";
 
 export const ContactList = () => {
   const contacts = useSelector(selectFilteredContacts);
@@ -16,9 +17,7 @@ export const ContactList = () => {
   return (
     <div>
       {/* {loading && !error && <Loader />} */}
-      {!loading && error && (
-        <p className={css.error}>Whoops, try reloading the page</p>
-      )}
+      {!loading && error && toast.error("Whoops, try again")}
       <Grid container spacing={2}>
         {contacts.map((contact) => {
           return (
